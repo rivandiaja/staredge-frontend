@@ -1,0 +1,55 @@
+
+> staredge-frontend@0.1.0 build
+> next build
+
+Ôû▓ Next.js 16.1.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+Ô£ô Compiled successfully in 5.2s
+  Running TypeScript ...
+  Collecting page data using 11 workers ...
+  Generating static pages using 11 workers (0/23) ...
+  Generating static pages using 11 workers (5/23) 
+  Generating static pages using 11 workers (11/23) 
+  Generating static pages using 11 workers (17/23) 
+Ô£ô Generating static pages using 11 workers (23/23) in 1195.1ms
+  Finalizing page optimization ...
+
+Route (app)
+Ôöî Ôùï /
+Ôö£ Ôùï /_not-found
+Ôö£ Ôùï /admin
+Ôö£ Ôùï /admin/authors
+Ôö£ Ôùï /admin/learning-paths
+Ôö£ Ôùï /admin/profile
+Ôö£ Ôùï /admin/users
+Ôö£ Ôùï /admin/webinars
+Ôö£ Ôùï /author
+Ôö£ ãÆ /author/[username]
+Ôö£ Ôùï /author/challenges
+Ôö£ ãÆ /author/challenges/[id]/edit
+Ôö£ Ôùï /author/courses
+Ôö£ ãÆ /author/courses/[id]/edit
+Ôö£ ãÆ /author/courses/[id]/stage/[stageId]/edit
+Ôö£ Ôùï /author/courses/create
+Ôö£ Ôùï /author/profile
+Ôö£ Ôùï /author/submissions
+Ôö£ Ôùï /author/webinars
+Ôö£ ãÆ /certificates/[code]
+Ôö£ Ôùï /dashboard
+Ôö£ Ôùï /learning-paths
+Ôö£ ãÆ /learning-paths/[id]
+Ôö£ ãÆ /learning-paths/[id]/stage/[stageId]
+Ôö£ Ôùï /login
+Ôö£ Ôùï /my-certificates
+Ôö£ ãÆ /my-certificates/[id]
+Ôö£ ãÆ /portfolio/[username]
+Ôö£ Ôùï /profile
+Ôö£ Ôùï /register
+Ôöö ãÆ /webinars/[id]
+
+
+Ôùï  (Static)   prerendered as static content
+ãÆ  (Dynamic)  server-rendered on demand
+

@@ -1,0 +1,217 @@
+📚 StarEdge Backend API Documentation
+Base URL: http://localhost:8080/api/v1
+
+Auth Header: Authorization: Bearer <your_jwt_token> (Untuk endpoint yang diproteksi)
+
+1. Authentication (Public)
+Register User
+Membuat akun baru (Siswa).
+
+Endpoint: POST /auth/register
+
+Body:
+
+JSON
+{
+  "name": "Budi Santoso",
+  "email": "budi@example.com",
+  "password": "password123",
+  "role": "user" 
+}
+Response (201): { "message": "Registration successful", "data": {...} }
+
+Login
+Masuk untuk mendapatkan Token JWT.
+
+Endpoint: POST /auth/login
+
+Body:
+
+JSON
+{
+  "email": "budi@example.com",
+  "password": "password123"
+}
+Response (200):
+
+JSON
+{
+  "message": "Login successful",
+  "token": "eyJhGcio...", 
+  "user": { "id": 1, "name": "Budi", "role": "user" }
+}
+2. Public Content (Tanpa Login)
+Get All Learning Paths
+Melihat katalog kelas yang tersedia.
+
+Endpoint: GET /learning-paths
+
+Response (200): Array of Learning Paths (Thumbnail, Title, Description).
+
+Get Landing Page Content
+Mengambil konten dinamis untuk halaman depan (Hero section, Features, dll).
+
+Endpoint: GET /landing-page
+
+Response (200): List of active sections sorted by order.
+
+Seed Database (Dev Only)
+Mengisi database dengan data dummy awal.
+
+Endpoint: GET /seed
+
+3. Learning Process (Student - Protected)
+Wajib menyertakan Header Authorization.
+
+Get Learning Path Detail
+Melihat detail kurikulum (daftar modul).
+
+Endpoint: GET /learning-paths/:id
+
+Get Module Detail (With Locking Status)
+Melihat daftar Stage dalam Modul. Field is_locked menentukan apakah stage bisa diakses.
+
+Endpoint: GET /modules/:id
+
+Response (200):
+
+JSON
+{
+  "data": {
+    "id": 1,
+    "title": "Modul 1",
+    "stages": [
+      { "id": 10, "title": "Intro", "is_locked": false, "is_completed": true },
+      { "id": 11, "title": "Setup", "is_locked": false, "is_completed": false },
+      { "id": 12, "title": "Advanced", "is_locked": true, "is_completed": false }
+    ]
+  }
+}
+Sign Copyright Agreement
+Wajib dilakukan sebelum mengakses materi dalam modul.
+
+Endpoint: POST /modules/:id/agreement
+
+Response (201): { "message": "Agreement signed successfully" }
+
+Get Stage Content (Materi Belajar)
+Mengambil isi materi (Text, Video, Code).
+
+Endpoint: GET /stages/:id
+
+Syarat Akses:
+
+User sudah sign agreement.
+
+User sudah menyelesaikan stage sebelumnya (Sequential Locking).
+
+Response (200):
+
+JSON
+{
+  "data": {
+    "id": 11,
+    "title": "Setup Golang",
+    "blocks": [
+      { "type": "text", "content": "Download Go disini..." },
+      { "type": "code", "content": "go version" }
+    ]
+  }
+}
+Complete Stage
+Menandai stage sebagai selesai agar stage berikutnya terbuka.
+
+Endpoint: POST /stages/:id/complete
+
+Response (200): { "message": "Stage marked as completed" }
+
+Submit Assignment (Tugas Akhir Modul)
+Mengirim link project atau jawaban esai.
+
+Endpoint: POST /modules/:id/submission
+
+Body: { "content": "https://github.com/budi/project-akhir" }
+
+4. Quiz & Evaluation (Student - Protected)
+Get Quiz
+Mengambil soal kuis untuk modul tertentu.
+
+Endpoint: GET /modules/:id/quiz
+
+Submit Quiz Answers
+Mengirim jawaban user dan mendapatkan nilai langsung.
+
+Endpoint: POST /modules/:id/quiz/submit
+
+Body:
+
+JSON
+{
+  "answers": [
+    { "question_id": 1, "option_id": 3 },
+    { "question_id": 2, "option_id": 5 }
+  ]
+}
+Response (200): { "score": 80, "grade": "A", "correct": 4, "total": 5 }
+
+5. Certificates (Reward)
+Claim Certificate
+Menerbitkan sertifikat jika seluruh materi selesai.
+
+Endpoint: POST /learning-paths/:id/claim-certificate
+
+Logic: Mengecek apakah semua Stage di semua Modul sudah is_completed = true.
+
+Response (201): { "certificate_code": "CERT-1-101-...", "grade": "A" }
+
+Get My Certificates
+Melihat daftar sertifikat yang dimiliki user.
+
+Endpoint: GET /my-certificates
+
+6. CMS (Author/Admin Only)
+Hanya bisa diakses user dengan role author atau admin.
+
+Create Learning Path
+Endpoint: POST /cms/learning-paths
+
+Body: { "title": "Belajar React", "description": "...", "thumbnail": "url..." }
+
+Create Module
+Endpoint: POST /cms/modules
+
+Body: { "learning_path_id": 1, "title": "Modul 1", "order_index": 1 }
+
+Create Stage
+Endpoint: POST /cms/stages
+
+Body: { "module_id": 1, "title": "Instalasi", "order_index": 1 }
+
+Create Content Block
+Menambahkan elemen materi ke dalam stage.
+
+Endpoint: POST /cms/blocks
+
+Body:
+
+JSON
+{
+  "stage_id": 1,
+  "type": "text",  // Opsi: "text", "video", "code"
+  "content": "Ini adalah materi teks...",
+  "order_index": 1
+}
+Manage Landing Page (Admin)
+Menambah bagian promosi di halaman depan.
+
+Endpoint: POST /cms/landing-page
+
+Body:
+
+JSON
+{
+  "type": "hero",
+  "content": "{\"title\": \"Welcome\", \"subtitle\": \"Learn Code Now\"}",
+  "order_index": 1,
+  "is_active": true
+}

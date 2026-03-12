@@ -1,0 +1,215 @@
+PRODUCT REQUIREMENTS DOCUMENT (PRD)
+STAREDGE DIGITAL
+________________________________________
+1. Informasi Umum Produk
+Nama Produk	: Staredge Digital
+Jenis Produk	: Platform Pembelajaran Digital (Web-Based Learning Platform)
+Model Pembelajaran	: Self-Learning & Webinar Support
+Target Pengguna	: Mahasiswa dan Pelajar Pemula
+Status Dokumen	: Final – Disepakati
+Tahap Produk	: MVP (Minimum Viable Product)
+________________________________________
+2. Latar Belakang & Tujuan Produk
+Banyak mahasiswa dan pelajar pemula mengalami kesulitan dalam mempelajari materi teknis karena pembelajaran yang tidak runtut, tidak bertahap, dan kurang terstruktur. Staredge Digital hadir sebagai solusi dengan menyediakan platform pembelajaran mandiri yang menyajikan materi secara langkah demi langkah, bertingkat, dan mudah dipahami.
+Platform ini juga mendukung kebutuhan kelas berbasis webinar sebagai pelengkap materi pembelajaran mandiri.
+________________________________________
+3. Visi & Value Proposition
+3.1 Visi Produk
+Menjadi platform pembelajaran digital yang membantu pemula memahami materi teknis secara bertahap melalui struktur pembelajaran yang jelas, fleksibel, dan terarah.
+3.2 Value Proposition (Pernyataan Nilai)
+“Oh ternyata materinya mudah dipahami, belajarnya langkah demi langkah dan ada tingkatan materinya.”
+________________________________________
+4. Target Pengguna
+4.1 Primary User
+•	Mahasiswa
+•	Pelajar
+•	Pemula di bidang teknologi dan pemrograman
+4.2 Internal User
+•	Admin
+•	Author (Penulis Materi)
+________________________________________
+5. Peran & Hak Akses (User Roles)
+5.1 User (Learner)
+•	Mengakses learning path dan modul
+•	Menyelesaikan stage pembelajaran
+•	Mengerjakan quiz
+•	Mengunduh sertifikat
+•	Melihat progres belajar
+5.2 Author
+•	Membuat dan mengelola konten pembelajaran
+•	Membuat learning path, modul, stage, dan konten
+•	Mengelola quiz dan tugas
+•	Tidak dapat mengedit konten author lain
+5.3 Admin
+•	Mengelola akun author (CRUD author)
+•	Mengelola landing page
+•	Mengatur status konten (publish, draft, takedown)
+•	Tidak mengedit isi materi pembelajaran
+________________________________________
+6. Struktur Pembelajaran (Learning Structure)
+6.1 Hirarki Konten
+Learning Path
+ └── Module
+      └── Persetujuan Hak Cipta
+           └── Stage
+                └── Content Blocks
+________________________________________
+7. Persetujuan Hak Cipta
+7.1 Tujuan
+•	Melindungi hak cipta materi
+•	Mencegah distribusi ulang tanpa izin
+•	Memberikan kesadaran hukum kepada user
+7.2 Ketentuan
+•	Persetujuan dilakukan sebelum user mengakses stage pertama
+•	Berlaku satu kali per modul
+•	Persetujuan disimpan sebagai log sistem
+7.3 Isi Persetujuan
+•	Pernyataan kepemilikan hak cipta
+•	Larangan penyalinan dan distribusi
+•	Checkbox persetujuan wajib
+________________________________________
+8. Modul & Stage Pembelajaran
+8.1 Modul
+•	Modul berada di dalam Learning Path
+•	Modul dapat diakses bebas, namun sistem menyarankan urutan
+8.2 Stage
+•	Setiap modul terdiri dari beberapa stage
+•	Stage bersifat berurutan
+•	Setiap stage wajib memiliki nama
+•	Stage berikutnya terkunci sampai stage sebelumnya selesai
+Contoh Stage:
+1.	Pengenalan
+2.	Instalasi & Setup
+3.	Praktik Dasar
+4.	Evaluasi
+________________________________________
+9. Content Block System
+9.1 Konsep
+Setiap stage terdiri dari content block yang bebas disusun urutannya.
+9.2 Jenis Content Block
+•	Teks (markdown-like)
+•	Gambar
+•	Video pembelajaran
+•	Code snippet (dapat di-copy)
+•	Quiz pilihan ganda
+•	Custom input (paragraf, contoh: link GitHub)
+9.3 Karakteristik
+•	Block dapat ditambah, dihapus, dan diurutkan
+•	Tidak ada batasan urutan antar block
+________________________________________
+10. Editor Konten (Author Editor)
+10.1 Tipe Editor
+•	Block Editor (mirip Notion)
+10.2 Fitur Editor
+•	Menambah dan mengatur stage
+•	Memberi nama stage
+•	Menyusun content block
+•	Menyisipkan teks, gambar, video, code, quiz
+•	Preview konten
+•	Simpan sebagai draft
+________________________________________
+11. Learning Flow & Progress
+11.1 Akses Modul
+•	User bebas memilih modul
+•	Sistem menyarankan urutan belajar
+11.2 Penyelesaian Stage
+Stage dianggap selesai jika:
+•	Semua konten telah diakses
+•	Quiz di stage (jika ada) telah dikerjakan
+11.3 Penyelesaian Modul
+Modul dianggap selesai jika:
+•	Semua stage selesai
+•	Quiz akhir modul dikerjakan
+________________________________________
+12. Sistem Quiz
+12.1 Jenis Quiz
+•	Pilihan ganda (Multiple Choice)
+12.2 Penempatan Quiz
+•	Quiz dapat disisipkan di stage mana saja
+•	Nilai dikumulasi di akhir modul
+12.3 Aturan Quiz
+•	User dapat mengulang quiz langsung jika gagal
+•	Tidak ada batas attempt (MVP)
+12.4 Penilaian
+•	Nilai quiz dikumulasi
+•	Konversi nilai:
+o	A
+o	B
+o	C
+•	Nilai numerik dan grade ditampilkan
+________________________________________
+13. Tugas / Project Submission
+•	Tersedia di akhir modul
+•	Berupa input paragraf
+•	Digunakan untuk:
+o	Link GitHub project
+o	Jawaban bebas
+•	Bersifat opsional
+•	Pertanyaan dapat dikustom oleh author
+________________________________________
+14. Sertifikat
+14.1 Syarat Sertifikat
+•	Semua modul dalam learning path selesai
+•	Semua quiz telah dikerjakan
+14.2 Informasi Sertifikat
+•	Nama user
+•	Nama learning path
+•	Nilai akhir (A/B/C)
+•	Detail nilai quiz
+•	ID sertifikat unik
+14.3 Akses Sertifikat
+•	Dapat diunduh
+•	Dapat diverifikasi melalui link publik
+________________________________________
+15. Landing Page
+15.1 Konsep
+Landing page bersifat dinamis dan dikelola oleh admin.
+15.2 Komponen yang Bisa Di-CRUD Admin
+•	Hero section
+•	Highlight fitur
+•	Learning path unggulan
+•	Section webinar
+•	Call to action
+15.3 Pengaturan
+•	Admin dapat mengatur urutan section
+•	Section dapat diaktifkan / dinonaktifkan
+________________________________________
+16. Status Konten
+Setiap konten memiliki status:
+•	Draft
+•	Published
+•	Taken Down
+________________________________________
+17. MVP Scope
+17.1 Fitur yang Termasuk MVP
+•	Landing page
+•	Login & register
+•	Learning path
+•	Modul & stage
+•	Content block system
+•	Quiz
+•	Progress tracking
+•	Sertifikat
+17.2 Out of Scope
+•	Monetisasi
+•	Forum
+•	Komentar
+•	Chat
+•	Subscription
+•	Multi-author dalam satu modul
+________________________________________
+18. Constraint & Batasan
+•	Fokus pembelajaran mandiri
+•	Tidak ada interaksi sosial antar user
+•	Konten dikelola satu author per modul
+•	Monetisasi tidak dibahas pada fase ini
+________________________________________
+19. Status Persetujuan
+Dokumen PRD ini telah disepakati dan menjadi dasar:
+•	Perancangan arsitektur sistem
+•	Desain database
+•	Desain API
+•	Pengembangan frontend & backend
+________________________________________
+END OF DOCUMENT
+

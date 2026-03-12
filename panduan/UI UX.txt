@@ -1,0 +1,354 @@
+📋 UI/UX DESIGN REQUIREMENTS
+Staredge Digital
+1️⃣ TUJUAN DESAIN
+Objective Utama
+
+Membuat pengalaman belajar mudah dipahami, bertahap, dan tidak membingungkan
+
+Menekankan konsep step-by-step learning (stage-based)
+
+Cocok untuk pemula (mahasiswa/pelajar)
+
+Prinsip Desain
+
+Clean
+
+Fokus konten
+
+Minim distraksi
+
+Konsisten
+
+Mobile-friendly
+
+2️⃣ TARGET USER PERSONA (UNTUK DESAINER)
+🎓 Learner (User)
+
+Mahasiswa / pelajar pemula
+
+Tidak suka UI rumit
+
+Butuh petunjuk jelas: “selanjutnya klik apa”
+
+Lebih nyaman dengan visual yang rapi & progres terlihat
+
+✍️ Author
+
+Fokus membuat materi
+
+Butuh editor yang nyaman & fleksibel
+
+Tidak ingin banyak klik berulang
+
+🛠 Admin
+
+Fokus kontrol & monitoring
+
+UI sederhana, informatif
+
+Tidak perlu visual kompleks
+
+3️⃣ GLOBAL UI SYSTEM (WAJIB DIDESAIN)
+
+Tim UI/UX perlu menyiapkan:
+
+🎨 Design System
+
+Color palette (primary, secondary, neutral)
+
+Typography (heading, body, code)
+
+Spacing & layout grid
+
+Icon set
+
+Button states (default, hover, disabled, loading)
+
+Form components
+
+Alert / modal / toast
+
+📱 Responsiveness
+
+Desktop (prioritas)
+
+Tablet
+
+Mobile
+
+4️⃣ HALAMAN YANG WAJIB DIDESAIN (CORE PAGES)
+A. PUBLIC AREA
+1. Landing Page
+
+Admin bisa CRUD kontennya, jadi desain harus modular
+
+Section:
+
+Hero section (headline + CTA)
+
+Highlight fitur
+
+Learning path showcase
+
+Webinar section
+
+CTA (daftar / mulai belajar)
+
+Catatan UX:
+
+Section bisa aktif / nonaktif
+
+Urutan section fleksibel
+
+2. Authentication
+
+Login
+
+Register
+
+Forgot password
+
+UX Focus:
+
+Simple
+
+Tidak banyak field
+
+Error state jelas
+
+B. LEARNER AREA
+3. Dashboard User
+
+Menampilkan:
+
+Progress belajar
+
+Learning path yang diikuti
+
+Modul yang sedang berjalan
+
+Sertifikat (jika ada)
+
+UX Focus:
+
+Visual progress (progress bar)
+
+Call to action jelas
+
+4. Learning Path Detail
+
+Menampilkan:
+
+Deskripsi learning path
+
+Daftar modul
+
+Status modul (locked / unlocked / completed)
+
+UX Focus:
+
+Urutan modul jelas
+
+Indikator status visual
+
+5. Modul Overview
+
+Menampilkan:
+
+Deskripsi modul
+
+Daftar stage (berurutan & bernama)
+
+Status stage
+
+Tombol mulai / lanjutkan
+
+6. Persetujuan Hak Cipta
+
+Halaman / modal khusus:
+
+Teks pernyataan
+
+Checkbox persetujuan
+
+Tombol lanjut
+
+UX Focus:
+
+Jelas & tidak menakutkan
+
+Tidak bisa lanjut tanpa setuju
+
+7. Stage Learning Page (HALAMAN PALING KRITIS)
+
+Menampilkan:
+
+Nama stage
+
+Content blocks:
+
+Teks
+
+Gambar
+
+Video
+
+Code snippet (copy button)
+
+Quiz
+
+Input paragraf (GitHub link)
+
+UX Focus:
+
+Fokus membaca
+
+Navigasi “Next Stage”
+
+Progress indicator stage
+
+Quiz inline
+
+8. Quiz Result Page
+
+Menampilkan:
+
+Skor
+
+Grade (A / B / C)
+
+Status lulus / ulang
+
+9. Certificate Page
+
+Menampilkan:
+
+Preview sertifikat
+
+Nilai akhir
+
+Tombol download
+
+Link verifikasi publik
+
+C. AUTHOR AREA
+10. Author Dashboard
+
+Menampilkan:
+
+Modul yang dibuat
+
+Status konten (draft / published)
+
+Shortcut buat konten baru
+
+11. Content Editor (BLOCK EDITOR)
+
+Ini fitur paling penting untuk Author
+
+Editor harus mendukung:
+
+Tambah / hapus stage
+
+Penamaan stage
+
+Urutan stage
+
+Tambah content block:
+
+Text
+
+Image
+
+Video
+
+Code snippet
+
+Quiz
+
+Input paragraf
+
+Drag & drop urutan block
+
+Preview konten
+
+UX Focus:
+
+Mirip Notion
+
+Tidak teknis
+
+Minim klik
+
+D. ADMIN AREA
+12. Admin Dashboard
+
+Menampilkan:
+
+Total user
+
+Total author
+
+Total learning path
+
+Status konten
+
+13. Author Management
+
+List author
+
+Tambah / edit / nonaktifkan author
+
+14. Landing Page Editor
+
+CRUD section landing page
+
+Atur urutan section
+
+Aktif / nonaktif section
+
+5️⃣ USER FLOW YANG HARUS DIVISUALKAN
+
+Tim UI/UX wajib membuat flow diagram untuk:
+
+User baru → daftar → pilih learning path → modul → hak cipta → stage
+
+User belajar → quiz → nilai → sertifikat
+
+Author → buat modul → publish
+
+Admin → kelola author → kelola landing page
+
+6️⃣ STATE & EDGE CASE (SERING DILUPAKAN)
+
+Desain harus mencakup:
+
+Empty state (belum ada modul)
+
+Loading state
+
+Error state
+
+Disabled button
+
+Locked stage
+
+Quiz gagal
+
+Sertifikat belum tersedia
+
+7️⃣ OUTPUT YANG DIHARAPKAN DARI TIM UI/UX
+
+Tim UI/UX harus menyerahkan:
+
+Wireframe (low fidelity)
+
+High fidelity design
+
+Design system
+
+Component library
+
+Prototype (Figma)
+
+User flow diagram

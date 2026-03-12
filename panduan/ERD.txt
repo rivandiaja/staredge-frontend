@@ -1,0 +1,199 @@
+ENTITY RELATIONSHIP DIAGRAM (ERD)
+STAREDGE DIGITAL
+________________________________________
+1. USERS
+Menyimpan data seluruh pengguna sistem (learner, author, admin).
+users
+Field	Type	Description
+id	PK	Unique user ID
+name	varchar	Nama lengkap
+email	varchar	Email unik
+password	varchar	Password hash
+role	enum	user, author, admin
+is_active	boolean	Status akun
+created_at	timestamp	Waktu dibuat
+updated_at	timestamp	Waktu diubah
+________________________________________
+2. AUTHORS
+Data tambahan khusus author.
+authors
+Field	Type	Description
+id	PK	Author ID
+user_id	FK → users.id	Relasi ke user
+bio	text	Profil singkat
+created_at	timestamp	Waktu dibuat
+Relasi
+•	users (1) → (1) authors
+________________________________________
+3. LEARNING PATHS
+Kumpulan modul pembelajaran.
+learning_paths
+Field	Type	Description
+id	PK	Learning path ID
+title	varchar	Judul learning path
+description	text	Deskripsi
+thumbnail	varchar	Gambar cover
+status	enum	draft, published, taken_down
+created_by	FK → authors.id	Author pembuat
+created_at	timestamp	Waktu dibuat
+updated_at	timestamp	Waktu diubah
+________________________________________
+4. MODULES
+Modul pembelajaran dalam learning path.
+modules
+Field	Type	Description
+id	PK	Module ID
+learning_path_id	FK → learning_paths.id	Relasi learning path
+author_id	FK → authors.id	Owner modul
+title	varchar	Judul modul
+description	text	Deskripsi modul
+order_index	int	Urutan modul
+status	enum	draft, published, taken_down
+created_at	timestamp	Waktu dibuat
+updated_at	timestamp	Waktu diubah
+Relasi
+•	learning_paths (1) → (N) modules
+•	authors (1) → (N) modules
+________________________________________
+5. COPYRIGHT AGREEMENTS
+Menyimpan persetujuan hak cipta user per modul.
+copyright_agreements
+Field	Type	Description
+id	PK	Agreement ID
+user_id	FK → users.id	User
+module_id	FK → modules.id	Modul
+agreed_at	timestamp	Waktu persetujuan
+Relasi
+•	users (1) → (N) copyright_agreements
+•	modules (1) → (N) copyright_agreements
+________________________________________
+6. STAGES
+Tahapan materi di dalam modul (berurutan & bernama).
+stages
+Field	Type	Description
+id	PK	Stage ID
+module_id	FK → modules.id	Relasi modul
+title	varchar	Nama stage
+order_index	int	Urutan stage
+created_at	timestamp	Waktu dibuat
+updated_at	timestamp	Waktu diubah
+Relasi
+•	modules (1) → (N) stages
+________________________________________
+7. CONTENT BLOCKS
+Konten fleksibel di dalam stage.
+content_blocks
+Field	Type	Description
+id	PK	Block ID
+stage_id	FK → stages.id	Relasi stage
+type	enum	text, image, video, code, quiz, input
+content	text	Isi konten
+order_index	int	Urutan block
+created_at	timestamp	Waktu dibuat
+updated_at	timestamp	Waktu diubah
+Relasi
+•	stages (1) → (N) content_blocks
+________________________________________
+8. QUIZZES
+Quiz utama (biasanya di akhir modul).
+quizzes
+Field	Type	Description
+id	PK	Quiz ID
+module_id	FK → modules.id	Modul
+title	varchar	Judul quiz
+created_at	timestamp	Waktu dibuat
+________________________________________
+9. QUIZ QUESTIONS
+Pertanyaan quiz.
+quiz_questions
+Field	Type	Description
+id	PK	Question ID
+quiz_id	FK → quizzes.id	Relasi quiz
+question	text	Teks soal
+created_at	timestamp	Waktu dibuat
+________________________________________
+10. QUIZ OPTIONS
+Pilihan jawaban quiz.
+quiz_options
+Field	Type	Description
+id	PK	Option ID
+question_id	FK → quiz_questions.id	Pertanyaan
+option_text	text	Isi pilihan
+is_correct	boolean	Jawaban benar
+________________________________________
+11. QUIZ ATTEMPTS
+Pengerjaan quiz oleh user.
+quiz_attempts
+Field	Type	Description
+id	PK	Attempt ID
+user_id	FK → users.id	User
+quiz_id	FK → quizzes.id	Quiz
+score	int	Nilai
+grade	enum	A, B, C
+created_at	timestamp	Waktu submit
+________________________________________
+12. STAGE PROGRESS
+Progress user per stage.
+stage_progress
+Field	Type	Description
+id	PK	Progress ID
+user_id	FK → users.id	User
+stage_id	FK → stages.id	Stage
+is_completed	boolean	Status selesai
+completed_at	timestamp	Waktu selesai
+________________________________________
+13. MODULE SUBMISSIONS
+Tugas / project submission (opsional).
+module_submissions
+Field	Type	Description
+id	PK	Submission ID
+user_id	FK → users.id	User
+module_id	FK → modules.id	Modul
+content	text	Jawaban / link GitHub
+created_at	timestamp	Waktu submit
+________________________________________
+14. CERTIFICATES
+Sertifikat kelulusan learning path.
+certificates
+Field	Type	Description
+id	PK	Certificate ID
+user_id	FK → users.id	User
+learning_path_id	FK → learning_paths.id	Learning path
+final_score	int	Nilai akhir
+final_grade	enum	A, B, C
+certificate_code	varchar	Kode unik
+issued_at	timestamp	Waktu terbit
+________________________________________
+15. LANDING PAGE SECTIONS
+Konten landing page yang dinamis.
+landing_page_sections
+Field	Type	Description
+id	PK	Section ID
+type	enum	hero, feature, webinar, cta, showcase
+content	json/text	Isi section
+order_index	int	Urutan tampil
+is_active	boolean	Status tampil
+created_at	timestamp	Waktu dibuat
+________________________________________
+16. RELATIONSHIP SUMMARY (RINGKASAN RELASI)
+•	users → authors (1:1)
+•	authors → modules (1:N)
+•	learning_paths → modules (1:N)
+•	modules → stages (1:N)
+•	stages → content_blocks (1:N)
+•	modules → quizzes (1:1)
+•	quizzes → quiz_questions → quiz_options
+•	users → quiz_attempts (1:N)
+•	users → stage_progress (1:N)
+•	users → certificates (1:N)
+•	modules → copyright_agreements (1:N)
+________________________________________
+17. ERD STATUS
+ERD ini:
+•	Konsisten dengan PRD final
+•	Aman untuk PostgreSQL / MySQL
+•	Siap diturunkan ke:
+o	SQL Schema
+o	Migration
+o	API Contract
+
