@@ -375,7 +375,7 @@ export default function DashboardPage() {
         </section>
 
         {/* Stats Grid - Horizontal Slider on Mobile */}
-        <div className="flex flex-nowrap overflow-x-auto no-scrollbar pb-4 -mx-4 px-4 gap-3 md:mx-0 md:px-0 md:grid md:grid-cols-4 md:gap-6 snap-x touch-pan-y">
+        <div className="flex flex-nowrap overflow-x-auto no-scrollbar pb-4 -mx-4 px-4 gap-3 md:mx-0 md:px-0 md:grid md:grid-cols-4 md:gap-6 snap-x touch-auto">
           {isAuthor && authorStats
             ? /* AUTHOR STATS */
               [
@@ -503,7 +503,7 @@ export default function DashboardPage() {
                       Creator Toolkit
                     </h2>
                   </div>
-                  <div className="flex flex-nowrap overflow-x-auto no-scrollbar pb-4 -mx-4 px-4 gap-3 md:mx-0 md:px-0 md:grid md:grid-cols-3 md:gap-6 snap-x touch-pan-y">
+                  <div className="flex flex-nowrap overflow-x-auto no-scrollbar pb-4 -mx-4 px-4 gap-3 md:mx-0 md:px-0 md:grid md:grid-cols-3 md:gap-6 snap-x touch-auto">
                     {[
                       {
                         title: "Content Studio",
@@ -573,7 +573,7 @@ export default function DashboardPage() {
                       Analytics Performance
                     </h2>
                   </div>
-                  <div className="flex flex-nowrap overflow-x-auto no-scrollbar pb-4 -mx-4 px-4 gap-3 snap-x touch-pan-y md:grid md:grid-cols-2 md:mx-0 md:px-0 md:gap-4">
+                  <div className="flex flex-nowrap overflow-x-auto no-scrollbar pb-4 -mx-4 px-4 gap-3 snap-x touch-auto md:grid md:grid-cols-2 md:mx-0 md:px-0 md:gap-4">
                     <Card className="rounded-xl border-none shadow-md p-3 bg-white overflow-hidden relative group min-w-[180px] md:min-w-0 snap-center shrink-0">
                       <div className="flex justify-between items-center mb-4 relative z-10">
                         <div>

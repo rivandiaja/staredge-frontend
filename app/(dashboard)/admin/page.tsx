@@ -135,7 +135,7 @@ export default function AdminDashboardPage() {
       </div>
 
       {/* Primary Stats Grid - Horizontal Slider on Mobile */}
-      <div className="flex overflow-x-auto no-scrollbar pb-4 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 snap-x touch-pan-y">
+      <div className="flex overflow-x-auto no-scrollbar pb-4 -mx-4 px-4 md:mx-0 md:px-0 md:grid md:grid-cols-3 lg:grid-cols-5 gap-4 snap-x touch-auto">
         {statCards.map((stat, i) => (
           <Card
             key={i}

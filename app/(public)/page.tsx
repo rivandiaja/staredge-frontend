@@ -237,7 +237,7 @@ export default function LandingPage() {
             </Button>
           </div>
 
-          <div className="grid grid-rows-2 grid-flow-col md:grid-rows-none md:grid-cols-2 lg:grid-cols-3 md:grid-flow-row gap-4 md:gap-8 overflow-x-auto md:overflow-visible no-scrollbar -mx-4 px-4 md:mx-0 md:px-0 snap-x touch-pan-y md:snap-none">
+          <div className="grid grid-rows-2 grid-flow-col md:grid-rows-none md:grid-cols-2 lg:grid-cols-3 md:grid-flow-row gap-4 md:gap-8 overflow-x-auto md:overflow-visible no-scrollbar -mx-4 px-4 md:mx-0 md:px-0 snap-x touch-auto md:snap-none">
             {loading ? (
               [...Array(6)].map((_, i) => (
                 <div
@@ -386,7 +386,7 @@ export default function LandingPage() {
 
             <div
               ref={sliderRef}
-              className="flex flex-nowrap overflow-x-auto no-scrollbar pb-10 -mx-4 px-4 gap-8 snap-x touch-pan-y md:mx-0 md:px-0"
+              className="flex flex-nowrap overflow-x-auto no-scrollbar pb-10 -mx-4 px-4 gap-8 snap-x touch-auto md:mx-0 md:px-0"
             >
               {authors.length > 0 ? (
                 authors.map((auth) => (
